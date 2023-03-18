@@ -1,3 +1,12 @@
+with tripdata as 
+(
+  select *,
+    row_number() over(partition by vendorid, lpep_pickup_datetime) as rn
+  from {{ source('staging','green') }}
+  where vendorid is not null 
+)
+
+
 select
     {{ dbt_utils.surrogate_key('vendorid', 'lpep_pickup_datetime') }} as tripid, 
     cast(vendorid as integer) as vendorid,
@@ -27,12 +36,12 @@ select
     cast(payment_type as integer) as payment_type,
     {{ get_payment_type_description('payment_type') }} as payment_type_description,
     cast(congestion_surcharge as numeric) as congestion_surcharge
-from {{ source('staging', 'green') }}
-where vendorid is not null and lpep_pickup_datetime is not null
+from tripdata
+where rn = 1
 
 -- dbt build --m <model.sql> --var 'is_test_run: false'
 {% if var('is_test_run', default=true) %}
 
-  limit 2
+  --limit 2
 
 {% endif %}
