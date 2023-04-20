@@ -15,3 +15,7 @@ In this project, I have done all the above three steps mentioned.
 - Using the raw data present in BigQuery, we are going to set these as source tables and create stage tables and finally loading fact and dimensional tables into BigQuery. The flow of the transformation is shown in the below lineage graph.
 
 ![dbt_lineag_graph](https://user-images.githubusercontent.com/41874704/233490276-3aa316fd-c298-4ce6-90af-1515e82a872b.png)
+
+### After deploying and running in production, the schema and tables look like below
+
+![dbt_production](https://user-images.githubusercontent.com/41874704/233493732-4b49fed8-7d58-439d-9298-b36b5233af5b.png)
