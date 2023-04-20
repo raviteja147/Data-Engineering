@@ -1,15 +1,17 @@
-Welcome to your new dbt project!
-
-### Using the starter project
-
-Try running the following commands:
-- dbt run
-- dbt test
+### Goal: Transforming the raw data into Analytical Views developing a dbt project using BigQuery
 
 
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [dbt community](http://community.getbdt.com/) to learn from other analytics engineers
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+What is dbt? 
+dbt stands for data build tool. It's a transformation tool: it allows us to transform process raw data in our Data Warehouse to transformed data which can be later used by Business Intelligence tools and any other data consumers.
+
+dbt also allows us to introduce good software engineering practices by defining a deployment workflow:
+- Develop models
+- Test and document models
+- ploy models with version control and CI/CD.
+
+In this project, I have done all the above three steps mentioned.
+
+#### How are we going to use dbt?
+Using the raw data present in BigQuery, we are going to us these as source tables and create stage tables adn finally loading fact and dimensional tables into BigQuery The flow of the transformation is shown in the below lineage graph.
+
+
