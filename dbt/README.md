@@ -2,7 +2,7 @@
 
 
 What is dbt? 
-- dbt stands for data build tool. It's a transformation tool: it allows us to transform process raw data in our Data Warehouse to transformed data which can be later used by Business Intelligence tools and any other data consumers.
+- dbt stands for data build tool. It's a transformation tool: it allows us to transform process raw data in our Data Warehouse to transformed data which can be later used by Business Intelligence tools and any other data consume>>>>>>> main
 
 dbt also allows us to introduce good software engineering practices by defining a deployment workflow:
 - Develop models
