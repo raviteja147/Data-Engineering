@@ -18,4 +18,4 @@ In this project, I have done all the above three steps mentioned.
 
 ### After deploying and running in production, the schema and tables look like below
 
-![dbt_production](https://user-images.githubusercontent.com/41874704/233493732-4b49fed8-7d58-439d-9298-b36b5233af5b.png)
+![dbt_production](https://user-images.githubusercontent.com/41874704/233494094-9c4977c0-8865-4bfa-bf88-a17228f5dbc9.png)
