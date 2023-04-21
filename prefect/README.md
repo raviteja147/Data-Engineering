@@ -20,7 +20,7 @@ Create another window and activate your conda environment. Start the Orion API s
 ```bash
 prefect orion start
 ```
-and then use the below address  for prefect UI
+and then use the below address to access prefect UI
 ```bash
 http://127.0.0.1:4200/
 ```
