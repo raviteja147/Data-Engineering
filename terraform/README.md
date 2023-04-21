@@ -14,6 +14,8 @@
    * Version control commits
    * Very useful for stack-based deployments, and with cloud providers such as AWS, GCP, Azure, K8S…
    * State-based approach to track resource changes throughout deployments
+   
+## In this project, all the infrastructure was build and maintained by terraform including Google Cloud Storage(GCS) Buckets and BigQuery databases.
 
 #### Files
 
