@@ -26,3 +26,55 @@ Here's the general architecture:
 * `airflow-inti` - Initialises service
 
 If we're running Airflow in Docker, we use something called `CeleryExecutor`
+
+### Workflow
+* Using Airflow, we are going to load data from web API to Google Cloud Storage(GCS) and from GCS to BigQuery for both yellow and green taxi trips.
+
+![web_2_bq_dag_graph_view](https://user-images.githubusercontent.com/41874704/233694793-11aa34e3-f345-4927-a610-eb5f3b8219d1.png)
+
+![web_2_bq_dag_tree_view](https://user-images.githubusercontent.com/41874704/233694819-8baeb8ab-065c-4766-b747-ad5b015b8e17.png)
+
+#### Execution
+  
+  1. Stop and delete containers, delete volumes with database data, & downloaded images (from the previous setup):
+    ```
+    docker-compose down --volumes --rmi all
+    ```
+
+   or
+    ```
+    docker-compose down --volumes --remove-orphans
+    ```
+    
+   Or, if you need to clear your system of any pre-cached Docker issues:
+    ```
+    docker system prune
+    ```
+    
+   Also, empty the airflow `logs` directory.
+    
+  2. Build the image (only first-time, or when there's any change in the `Dockerfile`):
+  Takes ~5-10 mins for the first-time
+    ```shell
+    docker-compose build
+    ```
+    or (for legacy versions)
+    ```shell
+    docker build .
+    ```
+
+  3. Kick up the all the services from the container (no need to specially initialize):
+    ```shell
+    docker-compose -f docker-compose-nofrills.yml up
+    ```
+
+  4. In another terminal, run `docker ps` to see which containers are up & running (there should be 3, matching with the services in your docker-compose file).
+
+  5. Login to Airflow web UI on `localhost:8080` with creds: `admin/admin` (explicit creation of admin user was required)
+
+  6. Run your DAG on the Web Console.
+
+  7. On finishing your run or to shut down the container/s:
+    ```shell
+    docker-compose down
+    ```
