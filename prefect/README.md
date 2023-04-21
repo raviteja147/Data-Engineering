@@ -20,6 +20,11 @@ Create another window and activate your conda environment. Start the Orion API s
 ```bash
 prefect orion start
 ```
+and then use the below address  for prefect UI
+```bash
+http://127.0.0.1:4200/
+```
+
 
 ## Register the block types that come with prefect-gcp
 
