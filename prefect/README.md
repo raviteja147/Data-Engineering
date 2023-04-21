@@ -65,15 +65,19 @@ workflow queues are agents which are very light weight python process and lives 
 ```bash
 prefect deployment apply <yaml file name>
 ```
+Run the deployment
+```bash
+prefect deployment run <deployment name> -p "months=[1,2,3,4,5]"
+```
 
 ## Alternative: create a Docker Image and use a DockerContainer infrastructure block
 
 Bake your flow code into a Docker image, create a DockerContainer, and your flow code in a Docker container.
 Run the below code line by line
 ```bash
-docker image build -t <name>
-docker image push  <name>
+docker image build -t <image name>
+docker image push  <image name>
 docker_deploy.py
 prefect agent start -q "default"
-prefect deployment run <deployment name> -p "months=[1,2]"
+prefect deployment run <deployment name> -p "months=[1,2,3,4,5]"
 ```
