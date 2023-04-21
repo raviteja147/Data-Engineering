@@ -50,8 +50,21 @@ Write your Python functions and add `@flow` and `@task` decorators.
 Note: all code should be run from the top level of your folder to keep file paths consistent.
 
 ## Create deployments
+A deployment in prefect is a server-side concept that encapsulates a flow allowing it to be scheduled and trigerred via API.
+we can have multiple deployments for the same flow.
 
-Create and apply your deployments.
+### Deploying using CLI:
+This will create a yaml file contains metadata about the flow code  
+```bash
+prefect deployment build <filepath>:<entry point flow name> -n "<deployemnt name>"
+```
+
+This will send yaml file to prefect API and you can see the deployment in prefect UI deployment page once we run it, it will add to the workflow queues(default).
+workflow queues are agents which are very light weight python process and lives in ur execution env.
+
+```bash
+prefect deployment apply <yaml file name>
+```
 
 ## Run a deployment or create a schedule
 
