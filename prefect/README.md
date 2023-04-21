@@ -1,7 +1,10 @@
-## Prefect
+# Prefect
 Prefect is a modern workflow orchestration tool for coordinating all of your data tools. Orchestrate and observe your dataflow using Prefect. We will use Prefect to 
 load data from web API into Postgres and GCP's Google Cloud Storage and BigQuery. 
 
+## Prefect architecture
+
+![prefect_arch](https://user-images.githubusercontent.com/41874704/233724632-317c8276-1950-4f11-927a-e8a66aece100.png)
 
 
 # Setup
@@ -24,6 +27,10 @@ and then use the below address to access prefect UI
 ```bash
 http://127.0.0.1:4200/
 ```
+
+This is how the prefect UI looks like
+
+![prefect_UI](https://user-images.githubusercontent.com/41874704/233724758-74406e13-104b-4614-a702-05f3c9a300f6.png)
 
 
 ## Register the block types that come with prefect-gcp
