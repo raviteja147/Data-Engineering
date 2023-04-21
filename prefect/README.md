@@ -54,9 +54,9 @@ A deployment in prefect is a server-side concept that encapsulates a flow allowi
 we can have multiple deployments for the same flow.
 
 ### Deploying using CLI:
-This will create a yaml file contains metadata about the flow code  
+This will create a yaml file contains metadata about the flow code and schedule the flow based on cron 
 ```bash
-prefect deployment build <filepath>:<entry point flow name> -n "<deployemnt name>"
+prefect deployment build <filepath>:<entry point flow name> -n "<deployemnt name>" --cron "****" -a
 ```
 
 This will send yaml file to prefect API and you can see the deployment in prefect UI deployment page once we run it, it will add to the workflow queues(default).
@@ -66,16 +66,14 @@ workflow queues are agents which are very light weight python process and lives 
 prefect deployment apply <yaml file name>
 ```
 
-## Run a deployment or create a schedule
-
-Run a deployment ad hoc from the CLI or UI.
-
-Or create a schedule from the UI or when you create your deployment.
-
-## Start an agent
-
-Make sure your agent set up to poll the work queue you created when you made your deployment (*default* if you didn't specify a work queue).
-
-## Later: create a Docker Image and use a DockerContainer infrastructure block
+## Alternative: create a Docker Image and use a DockerContainer infrastructure block
 
 Bake your flow code into a Docker image, create a DockerContainer, and your flow code in a Docker container.
+Run the below code line by line
+```bash
+docker image build -t <name>
+docker image push  <name>
+docker_deploy.py
+prefect agent start -q "default"
+prefect deployment run <deployment name> -p "months=[1,2]"
+```
