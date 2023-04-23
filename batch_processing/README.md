@@ -1,63 +1,44 @@
-## Week 5: Batch Processing
+## Batch Processing
 
-### 5.1 Introduction
+There are 2 ways of processing data:
+* ***Batch processing***: processing _chunks_ of data at _regular intervals_.
+    * Example: processing taxi trips each month.
+        ```mermaid
+        graph LR;
+            a[(taxi trips DB)]-->b(batch job)
+            b-->a
+        ```
+* ***Streaming***: processing data _on the fly_.
+    * Example: processing a taxi trip as soon as it's generated.
+        ```mermaid
+        graph LR;
+            a{{User}}-. gets on taxi .->b{{taxi}}
+            b-- ride start event -->c([data stream])
+            c-->d(Processor)
+            d-->e([data stream])
+            
+            
+## Types of batch jobs
 
-:movie_camera: [Introduction to Batch Processing](https://youtu.be/dcHe5Fl3MF8?list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb)
+A ***batch job*** is a ***job*** (a unit of work) that will process data in batches.
 
-:movie_camera: [Introduction to Spark](https://youtu.be/FhaqbEOuQ8U?list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb)
+Batch jobs may be _scheduled_ in many ways:
 
-
-### 5.2 Installation
-
-Follow [these intructions](setup/) to install Spark:
-
-* [Windows](setup/windows.md)
-* [Linux](setup/linux.md)
-* [MacOS](setup/macos.md)
-
-And follow [this](setup/pyspark.md) to run PySpark in Jupyter
-
-:movie_camera: [Installing Spark (Linux)](https://youtu.be/hqUbB9c8sKg?list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb)
-  
-
-### 5.3 Spark SQL and DataFrames
-
-:movie_camera: [First Look at Spark/PySpark](https://youtu.be/r_Sf6fCB40c?list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb)   
-   
-:movie_camera: [Spark Dataframes](https://youtu.be/ti3aC1m3rE8?list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb)
-
-:movie_camera: [(Optional) Preparing Yellow and Green Taxi Data](https://youtu.be/CI3P4tAtru4?list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb)
-
-Script to prepare the Dataset [download_data.sh](code/download_data.sh)
-
-**Note**: The other way to infer the schema (apart from pandas) for the csv files, is to set the `inferSchema` option to `true` while reading the files in Spark.
-
-:movie_camera: [SQL with Spark](https://www.youtube.com/watch?v=uAlp2VuZZPY&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb)
+* Weekly
+* Daily (very common)
+* Hourly (very common)
+* X timnes per hous
+* Every 5 minutes
+* Etc...
 
 
-### 5.4 Spark Internals
+## Pros and cons of batch jobs
 
-:movie_camera: [Anatomy of a Spark Cluster](https://youtu.be/68CipcZt7ZA&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb)
+* Advantages:
+    * Easy to manage. There are multiple tools to manage them (the technologies we already mentioned)
+    * Re-executable. Jobs can be easily retried if they fail.
+    * Scalable. Scripts can be executed in more capable machines; Spark can be run in bigger clusters, etc.
+* Disadvantages:
+    * Delay. Each task of the workflow in the previous section may take a few minutes; assuming the whole workflow takes 20 minutes, we would need to wait those 20 minutes until the data is ready for work.
 
-:movie_camera: [GroupBy in Spark](https://youtu.be/9qrDsY_2COo&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb)
-
-:movie_camera: [Joins in Spark](https://youtu.be/lu7TrqAWuH4&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb)
-
-
-### 5.5 RDDs
-
-Coming soon
-
-
-### Homework
-
-See [here](homework.md) for more details
-
-## Community notes
-
-Did you take notes? You can share them here.
-
-* [Notes by Alvaro Navas](https://github.com/ziritrion/dataeng-zoomcamp/blob/main/notes/5_batch_processing.md)
-* [Sandy's DE Learning Blog](https://learningdataengineering540969211.wordpress.com/2022/02/24/week-5-de-zoomcamp-5-2-1-installing-spark-on-linux/)
-* [Alternative : Using docker-compose to launch spark by rafik](https://gist.github.com/rafik-rahoui/f98df941c4ccced9c46e9ccbdef63a03) 
-* Add your notes here (above this line)
+However, the advantages of batch jobs often compensate for its shortcomings, and as a result most companies that deal with data tend to work with batch jobs mos of the time (probably 90%).
