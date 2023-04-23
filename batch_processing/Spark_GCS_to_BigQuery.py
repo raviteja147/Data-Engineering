@@ -1,8 +1,4 @@
-#!/usr/bin/env python
-# coding: utf-8
-
 import argparse
-
 import pyspark
 from pyspark.sql import SparkSession
 from pyspark.sql import functions as F
@@ -108,7 +104,3 @@ GROUP BY
 df_result.write.format('bigquery') \
     .option('table', output) \
     .save()
-    
-
-
-
