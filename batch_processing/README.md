@@ -97,7 +97,6 @@ graph LR;
 
 ### Creating the cluster
 
-_[Video source](https://www.youtube.com/watch?v=osAiAYahvh8&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=61)_
 
 [Dataproc](https://cloud.google.com/dataproc) is Google's cloud-managed service for running Spark and other data processing tools such as Flink, Presto, etc.
 
@@ -105,15 +104,18 @@ You may access Dataproc from the GCP dashboard and typing `dataproc` on the sear
 
 In the images below you may find some example values for creating a simple cluster. Give it a name of your choosing and choose the same region as your bucket.
 
-![creating a cluster](images/05_01.png)
+![dataproc_01](https://user-images.githubusercontent.com/41874704/233819699-03d1fe61-b9c9-4d36-b2c2-42fc1efc6a6e.png)
+
 
 We would normally choose a `standard` cluster, but you may choose `single node` if you just want to experiment and not run any jobs.
 
-![creating a cluster](images/05_02.png)
+![dataproc_02](https://user-images.githubusercontent.com/41874704/233819707-4731ca8d-01fa-4e26-b54f-73d9ecc3028c.png)
+
 
 Optionally, you may install additional components but we won't be covering them in this lesson.
 
-![creating a cluster](images/05_03.png)
+![dataproc_03](https://user-images.githubusercontent.com/41874704/233819713-4e098e1b-4cd5-4b8f-9b14-9e606ae1406c.png)
+
 
 You may leave all other optional settings with their default values. After you click on `Create`, it will take a few seconds to create the cluster. You may notice an extra VM instance under VMs; that's the Spark instance.
 
@@ -123,7 +125,8 @@ In a [previous section](#configuring-spark-with-the-gcs-connector) we saw how to
 
 In Dataproc's _Clusters_ page, choose your cluster and un the _Cluster details_ page, click on `Submit job`. Under _Job type_ choose `PySpark`, then in _Main Python file_ write the path to your script (you may upload the script to your bucket and then copy the URL).
 
-![setting up a job](images/05_04.png)
+![dataproc_04](https://user-images.githubusercontent.com/41874704/233819720-b6206e1a-016e-4b31-a266-874842e9befb.png)
+
 
 Make sure that your script does not specify the `master` cluster! Your script should take the connection details from Dataproc; make sure it looks something like this:
 
@@ -137,7 +140,8 @@ You may use [this script](https://github.com/DataTalksClub/data-engineering-zoom
 
 We also need to specify arguments, in a similar fashion to what we saw [in the previous section](#parametrizing-our-scripts-for-spark), but using the URL's for our folders rather than the local paths:
 
-![setting up a job](images/05_05.png)
+![dataproc_05](https://user-images.githubusercontent.com/41874704/233819722-1544143c-edd9-4d22-8348-8d9290aa176e.png)
+
 
 Now press `Submit`. Sadly there is no easy way to access the Spark dashboard but you can check the status of the job from the `Job details` page.
 
