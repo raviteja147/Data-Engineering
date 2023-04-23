@@ -1,5 +1,7 @@
 ## Batch Processing
 
+Using Apache Spark, we will be loading the data from Google Cloud Storage(GCS) to BigQuery by doing some transformations.
+
 There are 2 ways of processing data:
 * ***Batch processing***: processing _chunks_ of data at _regular intervals_.
     * Example: processing taxi trips each month.
