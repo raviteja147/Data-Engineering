@@ -123,8 +123,6 @@ You may leave all other optional settings with their default values. After you c
 
 ### Running a job with the web UI
 
-In a [previous section](#configuring-spark-with-the-gcs-connector) we saw how to connect Spark to our bucket in GCP. However, in Dataproc we don't need to specify this connection because it's already pre-comfigured for us. We will also submit jobs using a menu, following similar principles to what we saw in the previous section.
-
 In Dataproc's _Clusters_ page, choose your cluster and un the _Cluster details_ page, click on `Submit job`. Under _Job type_ choose `PySpark`, then in _Main Python file_ write the path to your script (you may upload the script to your bucket and then copy the URL).
 
 ![dataproc_04](https://user-images.githubusercontent.com/41874704/233819720-b6206e1a-016e-4b31-a266-874842e9befb.png)
@@ -138,9 +136,7 @@ spark = SparkSession.builder \
     .getOrCreate()
 ```
 
-You may use [this script](https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/week_5_batch_processing/code/06_spark_sql.py) for testing.
-
-We also need to specify arguments, in a similar fashion to what we saw [in the previous section](#parametrizing-our-scripts-for-spark), but using the URL's for our folders rather than the local paths:
+We also need to specify arguments as shown in the below image.
 
 ![dataproc_05](https://user-images.githubusercontent.com/41874704/233819722-1544143c-edd9-4d22-8348-8d9290aa176e.png)
 
