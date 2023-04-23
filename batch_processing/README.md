@@ -155,12 +155,14 @@ We can now submit a job from the command line, like this:
 
 ```bash
 gcloud dataproc jobs submit pyspark \
-    --cluster=<your-cluster-name> \
+    --cluster=ny-taxi-cluster \
     --region=europe-west6 \
-    gs://<url-of-your-script> \
+    --jars=gs://spark-lib/bigquery/spark-bigquery-latest_2.12.jar \
+    gs://dtc_data_lake_taxi-rides-ny-375905/spark_sql_bg.py \
     -- \
-        --param1=<your-param-value> \
-        --param2=<your-param-value>
+        --input_green=gs://dtc_data_lake_taxi-rides-ny-375905/data/green/*/ \
+        --input_yellow=gs://dtc_data_lake_taxi-rides-ny-375905/data/yellow/*/ \
+        --output=taxi_trips.reports
 ```
 
 You may find more details on how to run jobs [in the official docs](https://cloud.google.com/dataproc/docs/guides/submit-job).
