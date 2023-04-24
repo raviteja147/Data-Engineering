@@ -6,7 +6,7 @@ This project involves extracting data using Python script from the New York dail
 ## Project details and implementation
 This project makes use of Google Cloud Platform, particularly Cloud Storage, Dataproc and BigQuery.
 
-Cloud infrastructure is mostly managed with Terraform, except for Airflow and dbt instances.
+Cloud infrastructure is mostly managed with `Terraform`, except for Airflow and dbt instances.
 
 Data ingestion is carried out by an Airflow DAG. The DAG downloads new data hourly and ingests it to a Cloud Storage bucket which behaves as the Data Lake for the project. The dataset is in JSON format; the DAG transforms it in order to get rid of any payload objects and parquetizes the data before uploading it. The DAG also creates an external table in BigQuery for querying the parquet files.
 
