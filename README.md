@@ -8,9 +8,9 @@ This project makes use of Google Cloud Platform, particularly Cloud Storage, Dat
 
 Cloud infrastructure is mostly managed with `Terraform`, except for Airflow and dbt instances.
 
-Data ingestion is carried out by an Airflow DAG. The DAG downloads new data hourly and ingests it to a Cloud Storage bucket which behaves as the Data Lake for the project. The dataset is in JSON format; the DAG transforms it in order to get rid of any payload objects and parquetizes the data before uploading it. The DAG also creates an external table in BigQuery for querying the parquet files.
+Data ingestion is carried out by an Airflow DAG. The DAG downloads new data hourly and ingests it to a Cloud Storage bucket which behaves as the Data Lake for the project. The DAG also creates an external table in BigQuery for querying the parquet files.
 
-The Data Warehouse is defined with dbt. It creates a table with all the info in the parquet files. The table is partitioned by day and clustered on actor ID's.
+The Data Warehouse is defined with dbt. It creates a table with all the info in the parquet files. The table is partitioned by day and clustered on pickup dates.
 
 dbt is also used for creating the transformations needed for the visualizations. A view is created in a staging phase containing only the PushEvents (a Push Event contains one or more commits), and a final table containing the commit count per user is materialized in the deployment phase.
 
