@@ -1,7 +1,7 @@
 # Data-Engineering-Bootcamp
 ## Problem
 
-This project involves extracting data using Python script from the New York daily taxi trips official [website](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page), using `Airflow` as a data orchestration tool to load it into `Google Cloud Storage`, transforming the raw data into analytically ready data using `dbt` and `Apache Spark`, and ultimately loading it into `BigQuery`. `Google Datapro`c is used to run spark jobs, and `Prefect` is used as an alternative to Airflow for data orchestration.
+This project involves extracting data using Python script from the New York daily taxi trips official [website](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page), using `Airflow` as a data orchestration tool to load it into `Google Cloud Storage`, and then transforming the raw data into analytically ready data using `dbt` and `Apache Spark`, and ultimately loading it into `BigQuery`. `Google Datapro`c is used to run spark jobs, and `Prefect` is used as an alternative to Airflow for data orchestration.
 
 ## Project details and implementation
 This project makes use of Google Cloud Platform, particularly Cloud Storage and BigQuery.
