@@ -31,3 +31,4 @@ The visualization dashboard is a simple Google Data Studio report.
 * *Airflow*: Pipeline Orchestration
 * *DBT*: Data Transformation
 * *Spark*: Distributed Processing
+* *Google Data Studio*: Visualization
