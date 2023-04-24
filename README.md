@@ -24,6 +24,7 @@ The visualization dashboard is a simple Google Data Studio report.
 * *Google Cloud Platform (GCP)*: Cloud-based auto-scaling platform by Google
   * *Google Cloud Storage (GCS)*: Data Lake
   * *BigQuery*: Data Warehouse
+  * *Dataproc*: managed Spark and Hadoop service
 * *Terraform*: Infrastructure-as-Code (IaC)
 * *Docker*: Containerization
 * *SQL*: Data Analysis & Exploration
